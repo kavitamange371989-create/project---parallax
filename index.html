@@ -1,0 +1,255 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PARALLAX | Identity Protocol</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="background-grid"></div>
+  <div class="scanline"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-icon">P</div>
+      <div>
+        <h1>PARALLAX</h1>
+        <small>REALITY INTERFACE v5.0</small>
+      </div>
+    </div>
+    <div class="system-status">
+      <span class="live-dot"></span> SYSTEM ONLINE
+      <span id="clock">00:00:00</span>
+    </div>
+  </header>
+
+  <div class="app-layout">
+    <aside class="sidebar">
+      <p class="menu-label">MAIN SYSTEM</p>
+      <button class="nav-btn active" data-page="overview">◈ Overview</button>
+      <button class="nav-btn" data-page="map">⌖ Reality Map</button>
+      <button class="nav-btn" data-page="scanner">⌁ Anomaly Scanner</button>
+      <button class="nav-btn" data-page="memory">▤ Memory Vault</button>
+      <button class="nav-btn" data-page="timeline">◷ Timeline</button>
+
+      <div class="sidebar-bottom">
+        <div class="mini-core"></div>
+        <small>NEURAL CORE</small>
+        <strong>STABLE</strong>
+        <small>Operator access granted</small>
+      </div>
+    </aside>
+
+    <main class="main-content">
+
+      <!-- OVERVIEW -->
+      <section class="page active" id="overview">
+        <div class="page-heading">
+          <div>
+            <p class="eyebrow">WELCOME, OPERATOR</p>
+            <h2>Reality is not what you think it is.</h2>
+            <p class="muted">Your reality interface is ready.</p>
+          </div>
+          <span class="status-pill">● ONLINE</span>
+        </div>
+
+        <div class="hero-grid">
+          <div class="panel core-panel">
+            <p class="eyebrow">CENTRAL NEURAL CORE</p>
+            <div class="core-orb" id="coreOrb">
+              <div class="orb-ring ring-one"></div>
+              <div class="orb-ring ring-two"></div>
+              <div class="orb-center">P</div>
+            </div>
+            <h3>NEURAL CORE</h3>
+            <p class="muted">Click the core to interact</p>
+            <small class="muted">A hidden signal may be waiting.</small>
+          </div>
+
+          <div class="panel stats-panel">
+            <p class="eyebrow">SYSTEM ANALYTICS</p>
+            <div class="stat">
+              <span>Reality Stability</span>
+              <strong id="stabilityText">87%</strong>
+              <div class="progress"><div id="stabilityBar" style="width:87%"></div></div>
+            </div>
+            <div class="stat">
+              <span>Memory Fragments</span>
+              <strong id="memoryCount">0</strong>
+            </div>
+            <div class="stat">
+              <span>Detected Anomalies</span>
+              <strong id="anomalyCount">0</strong>
+            </div>
+            <div class="stat">
+              <span>Active Identity</span>
+              <strong id="sectorName">NONE</strong>
+            </div>
+            <button class="primary-btn" data-goto="scanner">SCAN REALITY →</button>
+          </div>
+        </div>
+
+        <div class="panel story-panel">
+          <p class="eyebrow">TRANSMISSION 001</p>
+          <h3>A signal from the unknown</h3>
+          <p id="storyText">Something unusual has been detected beyond the known sectors. Do you want to investigate?</p>
+          <div class="choice-row">
+            <button class="primary-btn" id="investigateBtn">INVESTIGATE</button>
+            <button class="secondary-btn" id="ignoreBtn">IGNORE SIGNAL</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- REALITY MAP / IDENTITY PROTOCOL -->
+      <section class="page" id="map">
+        <div class="page-heading">
+          <div>
+            <p class="eyebrow">CLASSIFIED IDENTITY DATABASE</p>
+            <h2>Reality Map</h2>
+            <p class="muted">Three identities. Three unique stories.</p>
+          </div>
+          <span class="status-pill">3 IDENTITIES FOUND</span>
+        </div>
+
+        <div class="panel identity-map-panel">
+          <div class="identity-map">
+            <div class="map-orbit orbit-a"></div>
+            <div class="map-orbit orbit-b"></div>
+            <div class="map-connection connection-a"></div>
+            <div class="map-connection connection-b"></div>
+
+            <button class="identity-node node-p" data-sector="P">
+              <span>P</span>
+            </button>
+            <button class="identity-node node-s" data-sector="S">
+              <span>S</span>
+            </button>
+            <button class="identity-node node-k" data-sector="K">
+              <span>K</span>
+            </button>
+
+            <div class="map-center">P<br><small>CORE</small></div>
+          </div>
+
+          <div class="identity-details">
+            <p class="eyebrow">SELECTED IDENTITY</p>
+            <div id="identityEmpty">
+              <div class="lock-icon">⌑</div>
+              <h3>IDENTITY FILE LOCKED</h3>
+              <p class="muted">Select one of the three nodes to access its classified identity file.</p>
+            </div>
+
+            <div id="identityCard" class="identity-card hidden">
+              <div class="verified-label"><span>●</span> IDENTITY VERIFIED</div>
+              <div class="identity-avatar" id="identityAvatar">P</div>
+              <p class="eyebrow" id="identityCode">SECTOR P</p>
+              <h3 id="identityName">PREM</h3>
+              <p class="identity-tagline" id="identityTagline"></p>
+              <div class="identity-info" id="identityInfo"></div>
+              <button class="secondary-btn" id="lockIdentity">LOCK FILE</button>
+            </div>
+          </div>
+        </div>
+
+        <p class="map-footnote">PARALLAX IDENTITY PROTOCOL · AUTHORIZED ACCESS ONLY</p>
+      </section>
+
+      <!-- ANOMALY SCANNER -->
+      <section class="page" id="scanner">
+        <div class="page-heading">
+          <div>
+            <p class="eyebrow">DETECTION MODULE</p>
+            <h2>Anomaly Scanner</h2>
+            <p class="muted">Search for unusual signals in your reality.</p>
+          </div>
+        </div>
+
+        <div class="panel scanner-panel">
+          <div class="scanner-circle" id="scannerCircle">
+            <div class="scanner-ring"></div>
+            <div class="scanner-cross">⌁</div>
+          </div>
+          <h3 id="scanTitle">SCANNER STANDBY</h3>
+          <p class="muted" id="scanDescription">No active scan detected.</p>
+          <button class="primary-btn" id="scanBtn">INITIATE SCAN</button>
+        </div>
+
+        <div class="panel">
+          <p class="eyebrow">DETECTED SIGNALS</p>
+          <div id="anomalyList" class="anomaly-list">
+            <p class="muted">No signals detected yet. Initiate a scan.</p>
+          </div>
+        </div>
+
+        <div class="panel identity-panel">
+          <p class="eyebrow">CLASSIFIED MODULE · SECRET ACCESS</p>
+          <h3>IDENTITY DETECTOR</h3>
+          <p class="muted">Identify the visitor to the PARALLAX system.</p>
+          <div class="identity-buttons">
+            <button class="identity-btn" data-identity="krishna">♢ KRISHNA</button>
+            <button class="identity-btn" data-identity="shiv">♢ SHIV</button>
+            <button class="identity-btn" data-identity="prem">♢ PREM</button>
+          </div>
+          <p class="identity-hint">Three identities. Three secret greetings.</p>
+        </div>
+      </section>
+
+      <!-- MEMORY VAULT -->
+      <section class="page" id="memory">
+        <div class="page-heading">
+          <div>
+            <p class="eyebrow">ARCHIVED KNOWLEDGE</p>
+            <h2>Memory Vault</h2>
+            <p class="muted">Recovered fragments from unknown timelines.</p>
+          </div>
+        </div>
+        <div class="panel">
+          <p class="eyebrow">RECOVERED FRAGMENTS</p>
+          <div id="memoryList" class="memory-list">
+            <p class="muted">No memories recovered. Explore the system to discover them.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- TIMELINE -->
+      <section class="page" id="timeline">
+        <div class="page-heading">
+          <div>
+            <p class="eyebrow">CHRONOLOGICAL RECORD</p>
+            <h2>Timeline</h2>
+            <p class="muted">Every action leaves a trace.</p>
+          </div>
+        </div>
+        <div class="panel">
+          <div id="timelineList" class="timeline-list"></div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <!-- VOID RUNNER -->
+  <div class="game-overlay" id="gameOverlay">
+    <div class="game-box">
+      <button class="close-game" id="closeGame">✕</button>
+      <p class="eyebrow">SECRET MINI GAME</p>
+      <h2>VOID RUNNER</h2>
+      <p class="muted">Collect crystals. Avoid asteroids.</p>
+      <div class="game-stats">
+        <span>SCORE: <b id="gameScore">0</b></span>
+        <span>LIVES: <b id="gameLives">3</b></span>
+        <span>BEST: <b id="bestScore">0</b></span>
+      </div>
+      <canvas id="gameCanvas" width="600" height="360"></canvas>
+      <p class="game-help">MOVE: WASD / ARROW KEYS · P: PAUSE</p>
+      <button class="primary-btn" id="startGame">START GAME</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
